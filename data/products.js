@@ -30,14 +30,16 @@ export function getProductById(id) {
   })
 }
 
-export function addProductToOrder(id) {
-  return fetchWithoutResponse(`cart`, {
+export function addProductToOrder(productId) {
+  return fetchWithResponse('profile/cart', {
     method: 'POST',
     headers: {
       Authorization: `Token ${localStorage.getItem('token')}`,
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ product_id: id })
+    body: JSON.stringify({
+      product_id: productId
+    })
   })
 }
 
