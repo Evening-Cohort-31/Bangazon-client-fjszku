@@ -8,7 +8,7 @@ import Table from '../components/table'
 import { addPaymentType, getPaymentTypes, deletePaymentType } from '../data/payment-types'
 
 export default function Payments() {
-  const headers = ['Merchant Name', 'Card Number', '']
+  const headers = ['Merchant Name', 'Card Number', 'Expiration Date']
   const [payments, setPayments] = useState([])
   const [showModal, setShowModal] = useState(false)
   const refresh = () => getPaymentTypes().then((data) => {
