@@ -1,20 +1,17 @@
-import { useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
 import { rateProduct } from '../../data/products'
 import { RatingsContainer } from './container'
 import { Header } from './header'
 
+// Changed the logic behind productID to get the productID from useRouter instead of the rating itself
+
 export function Ratings({ average_rating, refresh, ratings = [], number_purchased, likes = [] }) {
-  const [productId, setProductId] = useState(0)
+  const router = useRouter()
+  const productId = router.query.id
   const saveRating = (newRating) => {
     rateProduct(productId, newRating).then(refresh)
 
   }
-
-  useEffect(() => {
-    if (ratings.length) {
-      setProductId(ratings[0].product)
-    }
-  }, [ratings])
 
   return (
     <div className="tile is-ancestor is-flex-wrap-wrap">
