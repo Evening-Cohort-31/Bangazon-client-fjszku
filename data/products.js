@@ -124,3 +124,13 @@ export function unLikeProduct(productId) {
     },
   })
 }
+
+export function getLikeProduct() {
+  return fetchWithResponse(`products/liked`, {
+    method: 'GET',
+    headers: {
+      Authorization: `Token ${localStorage.getItem('token')}`,
+      'Content-Type': 'application/json'
+    },
+  })
+}
